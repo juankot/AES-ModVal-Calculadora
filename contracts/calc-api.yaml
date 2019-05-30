@@ -1,0 +1,84 @@
+swagger: "2.0"
+info:
+  description: "Basic calculator."
+  version: "1.0.0"
+  title: "Calculator"
+host: "localhost:8090"
+basePath: "/v1"
+schemes:
+- "http"
+paths:
+  /add:
+    get:
+      operationId: "add"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "num1"
+        in: "query"
+        required: true
+        type: "integer"
+      - name: "num2"
+        in: "query"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "../schemas/result.json"
+  /sub:
+    patch:
+      operationId: "substract"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "../schemas/terms.json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "../schemas/result.json"
+  /mul:
+    post:
+      operationId: "multiply"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "../schemas/terms.json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "../schemas/result.json"
+  /div:
+    put:
+      operationId: "division"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "num1"
+        in: "query"
+        required: true
+        type: "integer"
+      - name: "num2"
+        in: "query"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "../schemas/result.json"

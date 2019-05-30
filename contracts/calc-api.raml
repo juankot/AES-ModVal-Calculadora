@@ -1,0 +1,53 @@
+#%RAML 1.0
+title: calc
+version: v1
+baseUri: http://localhost:8090/{version}
+types:
+  terms:
+    type: !include ../schemas/terms.json
+  result:
+    type: !include ../schemas/result.json
+/add:
+  get:
+    queryParameters:
+      num1:
+        type: integer
+      num2:
+        type: integer
+    responses:
+      200:
+        body:
+          application/json:
+            type: result
+/sub:
+    patch:
+      body:
+          application/json:
+            type: terms
+      responses:
+        200:
+          body:
+            application/json:
+              type: result
+/mul:
+    post:
+      body:
+        application/json:
+          type: terms
+      responses:
+        200:
+          body:
+            application/json:
+              type: result
+/div:
+    put:
+      queryParameters:
+          num1:
+            type: integer
+          num2:
+            type: integer
+      responses:
+        200:
+          body:
+            application/json:
+              type: result
